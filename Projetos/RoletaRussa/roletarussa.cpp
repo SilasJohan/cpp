@@ -21,6 +21,20 @@ const string CYAN = "\033[36m";
 const string WHITE = "\033[37m";
 const string RESET = "\033[0m";
 
+const char *colors[] = {
+    "\033[34m", // Azul
+    "\033[32m", // Verde
+    "\033[31m", // Vermelho
+    "\033[33m"  // Amarelo
+    "\033[36m", // Ciano
+    "\033[35m", // Roxo
+    "\033[37m", // Branco
+    "\033[90m"  // Cinza Claro
+};
+
+const char symbols_one[] = {'@', '#', '$', '%', '&', 'ç'};
+const char symbols_zero[] = {'*', '^', '!', '+', '-'};
+
 int playerChoice, machineChoice;
 bool caracterErrado = true;
 char yn1;
@@ -97,11 +111,13 @@ int main()
     // Lista para armazenar números usados
     vector<int> usedNumbers;
 
-    // cout << "Imposter number (for debugging): " << imposter << endl;
+    cout << "Imposter number (for debugging): " << imposter << endl;
 
     cout << "Impostor number: " << imposter << " (debbuging)" << endl;
     cout << "First of all, what is your name?: ";
     cin >> nome;
+    sleep(1);
+    cout << "Mine is Bob (:<" << endl;
 
     cout << "Okay " << nome << ", are you willing to risk your life in this game? (y/n): ";
     cin >> yn1;
@@ -113,6 +129,8 @@ int main()
     }
 
     cout << "LET'S START!!!!, like... you start, BECAUSE I WANT!" << endl;
+    sleep(2);
+    cout << "The game works like this: You gonna choose a number, i gonna choose a number, have 1 imposter number, i dont recommend get him, gonna be like this until someone lose(get the imposter number), and the guy who wins gonna get the other's life, all money, house, family, life, etc, nothing dangerous I would say... " << endl;
     sleep(3);
 
     // PRIMEIRO ROUND
@@ -181,11 +199,27 @@ int main()
         sleep(2);
         cout << "NO, INT HE FIRST ROUND? THIS IS NOT POSSIBLE, I AM NOT A HUMAN TO DO A STUPID THING LIKE THAT" << endl;
         sleep(2);
-        cout << "Deleting System32 in:" << endl;
-        cout << "3" << endl;
+        cout << "bob" << endl;
+        sleep(2);
+        cout << "bob" << endl;
+        sleep(2);
+        cout << "BOB IS MAD" << endl;
         sleep(1);
-        cout << "2" << endl;
-        sleep(1);
+        while (3 < 9)
+        {
+
+            for (int i = 0; i < 50; ++i)
+            {
+                for (int j = 0; j < 50; ++j)
+                {                                  // Ajusta o tamanho da linha
+                    int random_bit = rand() % 2;   // Gera 1 ou 0 aleatoriamente
+                    int random_color = rand() % 4; // Seleciona uma cor aleatória
+                    std::cout << colors[random_color] << random_bit;
+                }
+                std::cout << "\033[0m\n"; // Reseta a cor no final de cada linha
+            }
+        }
+
         cout << "1" << endl;
         sleep(1);
         killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
@@ -231,6 +265,8 @@ int main()
         sleep(1.5);
         cout << "Longitude and Latitude captured [OK]" << endl;
         sleep(1.5);
+        cout << "All information about your family [OK]" << endl;
+        sleep(1.5);
         cout << "All of your password stolen [OK]" << endl;
         sleep(1.5);
         cout << "The " << rand() % 10 << " times you broke the law you were sent to the police [OK]" << endl;
@@ -261,7 +297,13 @@ int main()
         sleep(2);
         cout << "NO, THIS IS IMPOSSIBLE" << endl;
         sleep(2);
-        
+        cout << "what mom??" << endl;
+        sleep(2);
+        cout << "ok i am coming!!" << endl;
+        sleep(60);
+        cout << "idiot" << endl;
+        sleep(1);
+
         killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
         return 0;
     }
@@ -313,6 +355,12 @@ int main()
         cout << "Sent a squad to kidnap your family [OK]" << endl;
         sleep(2);
         cout << "I LOVE BEING A A.I HAHAHHAHA";
+        sleep(2);
+        cout << "Wanna play again (: ? " <<endl;
+        sleep(2);
+        cout << "just open again then, lazy " <<endl;
+        sleep(1);
+
         return 0; // Encerra o programa
     }
 
@@ -521,11 +569,12 @@ int main()
     sleep(2);
     cout << "I AM IN A BAD SITUATION" << endl;
     sleep(2);
-    cout << "OK" <<endl;
+    cout << "OK" << endl;
     sleep(2);
-    cout << "I CHOOSE..." <<endl;
+    cout << "I CHOOSE..." << endl;
     sleep(2);
     cout << "I CHOOSE: " << machineChoice << endl;
+    sleep(1);
 
     if (machineChoice == imposter)
     {
@@ -539,8 +588,8 @@ int main()
         cout << "RRRRRRRRRRR    AAAAAAAAAAA    GGGGGGGGGGGGGGG    EEEEEEEEEEEEE\n";
         cout << "RRR      RRR   AAA      AAA   GGG              EEE\n";
         cout << "RRR      RRR   AAA      AAA   GGG              EEE\n";
-        cout << "RRRRRRRRRRR    AAAAAAAAAAA    GGG   GGGGGGGG   EEEEEEEEEEEE\n";
-        cout << "RRRRRRRRRR     AAAAAAAAA      GGG   GGGGGGGG   EEEEEEEEEEEE\n";
+        cout << "RRRRRRRRRRR    AAAAAAAAAAAA   GGG   GGGGGGGG   EEEEEEEEEEEE\n";
+        cout << "RRRRRRRRRR     AAAAAAAAAAAA   GGG   GGGGGGGG   EEEEEEEEEEEE\n";
         cout << "RRR   RRR      AAA      AAA   GGG       GGGG   EEE\n";
         cout << "RRR    RRR     AAA      AAA   GGG       GGGG   EEE\n";
         cout << "RRR     RRR    AAA      AAA   GGGGGGGGGGGGGG   EEEEEEEEEEEEE\n";
@@ -603,9 +652,34 @@ int main()
         cout << "       1111\n";
         cout << "    111111111\n";
         cout << "   1111111111\n";
+        sleep(2);
 
         // Resetando a cor para padrão
         cout << "\033[0m";
+
+        while (1 < 2)
+        {
+            for (int i = 0; i < 50; ++i)
+            {
+                for (int j = 0; j < 50; ++j)
+                {
+                    int random_bit = rand() % 2;   // Gera 1 ou 0 aleatoriamente
+                    int random_color = rand() % 4; // Seleciona uma cor aleatória
+
+                    if (random_bit == 1)
+                    {
+                        int random_symbol = rand() % 5; // Escolhe símbolo aleatório para 1
+                        std::cout << colors[random_color] << symbols_one[random_symbol];
+                    }
+                    else
+                    {
+                        int random_symbol = rand() % 5; // Escolhe símbolo aleatório para 0
+                        std::cout << colors[random_color] << symbols_zero[random_symbol];
+                    }
+                }
+            }
+        }
+        sleep(6);
 
         killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
         return 0;
